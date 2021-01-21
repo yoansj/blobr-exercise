@@ -22,12 +22,37 @@ const useStyles = makeStyles((theme) => ({
     background: "#222222",
     color: "#FFFFFF"
   },
-  // necessary for content to be below app bar
-  toolbar: {...theme.mixins.toolbar, backgroundColor: "#000000", color: "#AAAA"},
-  content: {
-    flexGrow: 1,
+  submenu: {
+    ...theme.mixins.toolbar,
     backgroundColor: "#000000",
-    padding: theme.spacing(3),
+    width: 250,
+    height: 91,
+    left: 0,
+    top: 0,
+  },
+  pearsonTitle: {
+    color: "#FFFFFF",
+    position: "absolute",
+    width: "200px",
+    height: "24px",
+    left: "20px",
+    top: "20px",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "20px",
+    lineHeight: "24px"
+  },
+  userName: {
+    color: "#4CD964",
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: 16,
+    lineHeight: 19,
+    position: "absolute",
+    width: "200px",
+    height: "24px",
+    left: "20px",
+    top: "-90px",
   },
 }));
 
@@ -42,16 +67,15 @@ export default function Sidebar(props) {
       classes={{ paper: classes.drawerPaper }}
       anchor="left"
     >
-      <div className={classes.toolbar}>
-        Ecriture en gras avec nom de l'entreprise (?)
-        Nom du péon (en vert)
-        Bouton du péon
+      <div className={classes.submenu}>
+        <h1 className={classes.pearsonTitle}>Pearson Specter Litt</h1>
+        <h1 className={classes.userName}>Mike Ross</h1>
       </div>
       <Divider />
       <List>
         <SidebarButton title="Get started" icon={<GetStartedIcon />} />
         <SidebarButton title="Transactions" icon={<TransactionsIcon />} />
-        <SidebarButton title="Statistics" icon={<StatisticsIcon />} />
+        <SidebarButton selected title="Statistics" icon={<StatisticsIcon />} />
         <SidebarButton title="Settings" icon={<SettingsIcon />} />
         <SidebarButton title="Help center" icon={<HelpIcon />} />
       </List>

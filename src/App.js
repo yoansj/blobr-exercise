@@ -1,11 +1,12 @@
 import React from 'react';
 import Sidebar from './Components/Sidebar';
+import Statistics from './Components/Statistics';
 
 function App() {
   return (
-    <div className="App">
+    <div style={{display: 'flex'}}>
       <Sidebar />
-      aaaa
+      <Statistics />
     </div>
   );
 }

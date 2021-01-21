@@ -2,18 +2,39 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /* Material UI */
+import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-export default function SidebarButton(props)
-{
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: "#0071F2"
+  },
+  selected: {
+    color: "#FFFFFF",
+    fontSize: "16px",
+    fontWeight: "500",
+    lineHeight: "19px",
+  },
+  notSelected: {
+    color: "#B3B3B3",
+    fontSize: "16px",
+    fontWeight: "500",
+    lineHeight: "19px",
+  }
+}));
+
+export default function SidebarButton(props) {
+
+  const classes = useStyles();
+
   return (
-    <ListItem button>
+    <ListItem className={props.selected ? classes.root : []} button>
       <ListItemIcon>
         {props.icon}
       </ListItemIcon>
-      <ListItemText primary={props.title} />
+      <ListItemText classes={{primary: (props.selected ? classes.selected : classes.notSelected)}} primary={props.title} />
     </ListItem>
   )
 }
