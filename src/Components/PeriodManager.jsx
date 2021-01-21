@@ -11,8 +11,13 @@ const useStyles = makeStyles((theme) => ({
   },
   monthRenderer: {
     position: "absolute",
-    left: "949px",
+    left: "1360px",
     top: "119px",
+  },
+  monthScroller: {
+    position: "absolute",
+    left: "340px",
+    top: "180px",
   },
   leftButton: {
     border: "1px solid #EBEBEB",
@@ -79,7 +84,7 @@ export default function PeriodManager() {
           <h1 className={classes.buttonText}>Custom...</h1>
         </Button>
       </div>
-      <div>
+      <div className={classes.monthScroller}>
         <MonthsScroller />
       </div>
     </div>

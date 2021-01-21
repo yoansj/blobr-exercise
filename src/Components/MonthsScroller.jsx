@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 /* Material UI */
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import { LeftArrowIcon, RightArrowIcon } from '../Icons';
 
 const months = [
@@ -31,20 +32,20 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #EBEBEB",
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
-    width: 136,
+    width: 166,
     height: 50,
   },
   rightButton: {
     border: "1px solid #EBEBEB",
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
-    width: 136,
+    width: 166,
     height: 50,
   },
   middleButton: {
     border: "1px solid #EBEBEB",
     borderRadius: 0,
-    width: 136,
+    width: 146,
     height: 50,
   },
   monthText: {
@@ -85,7 +86,7 @@ export default function MonthsScroller() {
 
   const getMonthsArray = (index, monthsToRender, setCutMonths) => {
     let newMonths = months;
-    newMonths = newMonths.slice(index, index + monthsToRender + 1);
+    newMonths = newMonths.slice(index, index + monthsToRender);
     setCutMonths(newMonths);
     return (newMonths);
   }
@@ -96,54 +97,98 @@ export default function MonthsScroller() {
     newMonths = newMonths.slice(index, index + monthsToRender + 1);
     return (newMonths);
   });
+  const [scrollableRef, setScrollableRef] = useState();
 
+  /**
+   * Switch to the next month
+   */
   const nextMonth = () => {
+    if (!(months[months.length - 1].index - (index + 1) < monthsToRender - 1)) {
+      setIndex(prev => prev + 1);
+    }
+  }
 
+  /**
+   * Switch to the previous month
+   */
+  const prevMonth = () => {
+    if (index !== months[0].index) {
+      setIndex(prev => prev - 1);
+    }
+  }
+
+  const ScrollHandler = (event) => {
+    var e = window.event || event;
+    var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+    console.log("SCROLL !", `Direction: ${delta === 1 ? 'Up' : 'Down'}`);
+    if (delta > 1) nextMonth()
+    else prevMonth()
   }
 
   useEffect(() => {
     getMonthsArray(index, monthsToRender, setCutMonths);
   }, [index])
 
+  useEffect(() => {
+    if (scrollableRef && scrollableRef.addEventListener) {
+      console.log("HEYYYYAAA")
+      scrollableRef.addEventListener("mousewheel", ScrollHandler, false);
+      scrollableRef.addEventListener("DOMMouseScroll", ScrollHandler, false);
+    } else if (scrollableRef) {
+      scrollableRef.attachEvent("onmousewheel", ScrollHandler, false);
+    }
+  }, [scrollableRef]);
+
   if (cutMonths)
     return (
-      <div>
+      <div onScroll={(e) => console.log(e)} ref={(d) => setScrollableRef(d)}>
         {cutMonths.map((elem) => {
           if (elem.index === index) {
             return (
-              <Button startIcon={<LeftArrowIcon />} key={elem.index}>
-                <div style={{display: "block"}}>
+              <Button
+                classes={{root: classes.leftButton}}
+                startIcon={<IconButton onClick={prevMonth}><LeftArrowIcon /></IconButton>}
+                key={elem.index}
+              >
+                <div style={{ display: "block" }}>
                   <h1 className={classes.monthText}>{elem.month}</h1>
                   <h1 className={classes.yearText}>{elem.year}</h1>
                 </div>
               </Button>
-            )
-          } else if (elem.index === (index + monthsToRender - 1)) {
+            );
+          } else if (elem.index === index + monthsToRender - 1) {
             return (
-              <Button endIcon={<RightArrowIcon />} key={elem.index}>
-                <div style={{display: "block"}}>
+              <Button
+                classes={{root: classes.rightButton}}
+                endIcon={<IconButton onClick={nextMonth}><RightArrowIcon /></IconButton>}
+                key={elem.index}
+              >
+                <div style={{ display: "block" }}>
                   <h1 className={classes.monthText}>{elem.month}</h1>
                   <h1 className={classes.yearText}>{elem.year}</h1>
                 </div>
               </Button>
-            )
+            );
           } else {
             return (
-              <Button key={elem.index}>
-                <div style={{display: "block"}}>
+              <Button
+                classes={{root: classes.middleButton}}
+                key={elem.index}
+              >
+                <div style={{ display: "block" }}>
                   <h1 className={classes.monthText}>{elem.month}</h1>
                   <h1 className={classes.yearText}>{elem.year}</h1>
                 </div>
               </Button>
-            )
+            );
           }
         })}
       </div>
-    )
+    );
   else
     return (
       <div>
-        Empty
+        No months
       </div>
     )
 }
