@@ -6,6 +6,12 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { LeftArrowIcon, RightArrowIcon } from '../Icons';
 
+/**
+ * Used by the scroller to scroll between months
+ * Not a perfect solution but does the job
+ * (Indexes have to be ordered correctly)
+ * (Selected is only used to render the September text in blue)
+ */
 const months = [
   {month: "January", year: "2019", index: 0},
   {month: "February", year: "2019", index: 1},
@@ -24,12 +30,13 @@ const months = [
   {month: "June", year: "2020", index: 14},
   {month: "July", year: "2020", index: 15},
   {month: "August", year: "2020", index: 16},
-  {month: "September", year: "2020", index: 17},
+  {month: "September", year: "2020", index: 17, selected: true},
 ]
 
 const useStyles = makeStyles((theme) => ({
   leftButton: {
     border: "1px solid #EBEBEB",
+    backgroundColor: "#FFFFFF",
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     width: 166,
@@ -37,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   rightButton: {
     border: "1px solid #EBEBEB",
+    backgroundColor: "#FFFFFF",
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
     width: 166,
@@ -44,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   middleButton: {
     border: "1px solid #EBEBEB",
+    backgroundColor: "#FFFFFF",
     borderRadius: 0,
     width: 146,
     height: 50,
@@ -92,6 +101,7 @@ export default function MonthsScroller() {
   }
 
   const [index, setIndex] = useState(8);
+
   const [cutMonths, setCutMonths] = useState(() => {
     let newMonths = months;
     newMonths = newMonths.slice(index, index + monthsToRender + 1);
@@ -103,35 +113,38 @@ export default function MonthsScroller() {
    * Switch to the next month
    */
   const nextMonth = () => {
-    if (!(months[months.length - 1].index - (index + 1) < monthsToRender - 1)) {
       setIndex(prev => prev + 1);
-    }
   }
 
   /**
    * Switch to the previous month
    */
   const prevMonth = () => {
-    if (index !== months[0].index) {
+    if (index !== months[0].index)
       setIndex(prev => prev - 1);
-    }
   }
 
+  /* Called on scroll */
   const ScrollHandler = (event) => {
     var e = window.event || event;
     var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    console.log("SCROLL !", `Direction: ${delta === 1 ? 'Up' : 'Down'}`);
-    if (delta > 1) nextMonth()
-    else prevMonth()
+    if (delta === 1) nextMonth();
+    else prevMonth();
   }
 
+  /* Overflow useEffect for the scroller */
   useEffect(() => {
+    if (months[months.length - 1].index - (index) < monthsToRender - 1) {
+      setIndex(prev => prev - 1);
+    }
+    if (index < 0)
+      setIndex(0)
     getMonthsArray(index, monthsToRender, setCutMonths);
   }, [index])
 
+  /* Add the scroll to the Scroller div */
   useEffect(() => {
     if (scrollableRef && scrollableRef.addEventListener) {
-      console.log("HEYYYYAAA")
       scrollableRef.addEventListener("mousewheel", ScrollHandler, false);
       scrollableRef.addEventListener("DOMMouseScroll", ScrollHandler, false);
     } else if (scrollableRef) {
@@ -164,7 +177,7 @@ export default function MonthsScroller() {
                 key={elem.index}
               >
                 <div style={{ display: "block" }}>
-                  <h1 className={classes.monthText}>{elem.month}</h1>
+                  <h1 className={elem.selected ? classes.selectedMonthText : classes.monthText}>{elem.month}</h1>
                   <h1 className={classes.yearText}>{elem.year}</h1>
                 </div>
               </Button>
@@ -188,7 +201,7 @@ export default function MonthsScroller() {
   else
     return (
       <div>
-        No months
+        If you see this message it means something really bad has happened
       </div>
     )
 }

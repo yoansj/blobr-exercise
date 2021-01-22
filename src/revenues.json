@@ -1,0 +1,29 @@
+[
+  {
+    "date": "Tue 1 Sept 2020",
+    "revenue": 2,
+    "revenueTransactions": 1,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Wed 2 Sept 2020",
+    "revenue": 1,
+    "revenueTransactions": 1,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Thu 3 Sept 2020",
+    "revenue": 3,
+    "revenueTransactions": 2,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  }
+]

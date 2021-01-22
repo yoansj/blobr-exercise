@@ -4,6 +4,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import PeriodManager from './PeriodManager';
+import Revenues from './Revenues';
+import data from '../revenues.json'
+import DayTable from './DayTable';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -36,6 +39,17 @@ export default function Statistics(props) {
         <Divider />
       </div>
       <PeriodManager />
+      <Divider />
+      <div>
+        Grande div avec pleins de courbes
+        #################################
+        #################################
+      </div>
+      <Divider />
+      <div style={{backgroundColor: "#fbfbfb"}}>
+        <Revenues data={data} />
+        <DayTable data={data} />
+      </div>
     </main>
   )
 }

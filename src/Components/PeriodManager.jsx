@@ -7,7 +7,8 @@ import MonthsScroller from './MonthsScroller';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#FFFFFF"
+    backgroundColor: "#fbfbfb",
+    height: 170,
   },
   monthRenderer: {
     position: "absolute",
@@ -21,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
   leftButton: {
     border: "1px solid #EBEBEB",
+    backgroundColor: "#FFFFFF",
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     width: 80,
@@ -28,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   rightButton: {
     border: "1px solid #EBEBEB",
+    backgroundColor: "#FFFFFF",
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
     width: 80,
@@ -35,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   middleButton: {
     border: "1px solid #EBEBEB",
+    backgroundColor: "#FFFFFF",
     borderRadius: 0,
     width: 80,
     height: 32,
