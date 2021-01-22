@@ -25,5 +25,104 @@
     "refundsTransactions": 0,
     "chargeback": 0,
     "chargebackTransactions": 0
+  },
+  {
+    "date": "Sat 5 Sept 2020",
+    "revenue": 1,
+    "revenueTransactions": 2,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Mon 7 Sept 2020",
+    "revenue": 15,
+    "revenueTransactions": 5,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Wed 09 Sept 2020",
+    "revenue": 60,
+    "revenueTransactions": 30,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Fri 11 Sept 2020",
+    "revenue": 30,
+    "revenueTransactions": 15,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Sun 13 Sept 2020",
+    "revenue": 14.25,
+    "revenueTransactions": 5,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Tue 16 Sept 2020",
+    "revenue": 2,
+    "revenueTransactions": 1,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Sat 19 Sept 2020",
+    "revenue": 45.42,
+    "revenueTransactions": 11,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Mon 21 Sept 2020",
+    "revenue": 12.08,
+    "revenueTransactions": 2,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Wed 24 Sept 2020",
+    "revenue": 19.12,
+    "revenueTransactions": 9,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Fri 27 Sept 2020",
+    "revenue": 27.72,
+    "revenueTransactions": 13,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
+  },
+  {
+    "date": "Fri 29 Sept 2020",
+    "revenue": 29.09,
+    "revenueTransactions": 29,
+    "refunds": 0,
+    "refundsTransactions": 0,
+    "chargeback": 0,
+    "chargebackTransactions": 0
   }
 ]

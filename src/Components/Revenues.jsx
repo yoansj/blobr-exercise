@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "29px",
     color: "#000000",
     display: "inline-block",
-    marginLeft: 232+50,
+    marginLeft: 232,
   },
   cardDownLeftText: {
     fontFamily: "Inter",

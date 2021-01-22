@@ -7,6 +7,7 @@ import PeriodManager from './PeriodManager';
 import Revenues from './Revenues';
 import data from '../revenues.json'
 import DayTable from './DayTable';
+import StatisticsRenderer from './StatisticsRenderer';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -21,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
     left: "290px",
     top: "24px",
     fontStyle: "normal",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: "26px",
     lineHeight: "31px",
     paddingLeft: 30,
   },
-}))
+}));
 
 export default function Statistics(props) {
 
@@ -41,9 +42,7 @@ export default function Statistics(props) {
       <PeriodManager />
       <Divider />
       <div>
-        Grande div avec pleins de courbes
-        #################################
-        #################################
+        <StatisticsRenderer data={data} />
       </div>
       <Divider />
       <div style={{backgroundColor: "#fbfbfb"}}>

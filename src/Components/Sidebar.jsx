@@ -22,9 +22,6 @@ import {
   LogoutIcon,
 } from "../Icons";
 
-// Like https://github.com/brunobertolini/styled-by
-const styledBy = (property, mapping) => (props) => mapping[props[property]];
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
