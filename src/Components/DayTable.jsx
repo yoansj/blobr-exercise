@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /* Material UI */
 import { makeStyles } from '@material-ui/core/styles';
@@ -69,6 +70,15 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
     borderRadius: "8px",
   },
+  statistics: {
+    color: "#000000",
+    left: "290px",
+    top: "24px",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "24px",
+    lineHeight: "31px",
+  },
 }));
 
 export default function DayTable(props) {
@@ -77,8 +87,8 @@ export default function DayTable(props) {
 
   if (props.data)
     return (
-      <div style={{marginLeft: 50, marginTop: -50}}>
-        <h1>Per day</h1>
+      <div style={{marginLeft: 50, marginTop: -20}}>
+        <h1 className={classes.statistics}>Per day</h1>
         <TableContainer className={classes.tableRoot} component={Paper}>
           <Table >
             <TableHead>
@@ -117,4 +127,12 @@ export default function DayTable(props) {
         No data given to the component
       </div>
     )
+}
+
+DayTable.propTypes = {
+  /**
+   * Data used by the component
+   * @see revenues.json
+   */
+  data: PropTypes.array.isRequired,
 }

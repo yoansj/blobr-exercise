@@ -123,6 +123,6 @@
     "refunds": 0,
     "refundsTransactions": 0,
     "chargeback": 0,
-    "chargebackTransactions": 0
+    "chargebackTransactions": 1
   }
 ]

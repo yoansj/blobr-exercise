@@ -150,17 +150,24 @@ export default function MonthsScroller() {
     } else if (scrollableRef) {
       scrollableRef.attachEvent("onmousewheel", ScrollHandler, false);
     }
+    // eslint-disable-next-line
   }, [scrollableRef]);
 
   if (cutMonths)
     return (
-      <div onScroll={(e) => console.log(e)} ref={(d) => setScrollableRef(d)}>
+      <div ref={(d) => setScrollableRef(d)}>
         {cutMonths.map((elem) => {
           if (elem.index === index) {
             return (
               <Button
-                classes={{root: classes.leftButton}}
-                startIcon={<IconButton onClick={prevMonth}><LeftArrowIcon /></IconButton>}
+                classes={{ root: classes.leftButton }}
+                startIcon={
+                  <div style={{float: "left"}}>
+                    <IconButton style={{borderRadius: 8}} onClick={prevMonth}>
+                      <LeftArrowIcon fill={index === 0 ? "#B3B3B3" : "#000000"} />
+                    </IconButton>
+                  </div>
+                }
                 key={elem.index}
               >
                 <div style={{ display: "block" }}>
@@ -172,12 +179,32 @@ export default function MonthsScroller() {
           } else if (elem.index === index + monthsToRender - 1) {
             return (
               <Button
-                classes={{root: classes.rightButton}}
-                endIcon={<IconButton onClick={nextMonth}><RightArrowIcon /></IconButton>}
+                classes={{ root: classes.rightButton }}
+                endIcon={
+                  <div style={{float: "right"}}>
+                    <IconButton style={{borderRadius: 8}} onClick={nextMonth}>
+                      <RightArrowIcon
+                        fill={
+                          index === months[months.length - 10].index
+                            ? "#B3B3B3"
+                            : "#000000"
+                        }
+                      />
+                    </IconButton>
+                  </div>
+                }
                 key={elem.index}
               >
                 <div style={{ display: "block" }}>
-                  <h1 className={elem.selected ? classes.selectedMonthText : classes.monthText}>{elem.month}</h1>
+                  <h1
+                    className={
+                      elem.selected
+                        ? classes.selectedMonthText
+                        : classes.monthText
+                    }
+                  >
+                    {elem.month}
+                  </h1>
                   <h1 className={classes.yearText}>{elem.year}</h1>
                 </div>
               </Button>

@@ -41,11 +41,9 @@ export default function Statistics(props) {
       </div>
       <PeriodManager />
       <Divider />
-      <div>
-        <StatisticsRenderer data={data} />
-      </div>
-      <Divider />
+      <StatisticsRenderer data={data} />
       <div style={{backgroundColor: "#fbfbfb"}}>
+        <Divider />
         <Revenues data={data} />
         <DayTable data={data} />
       </div>

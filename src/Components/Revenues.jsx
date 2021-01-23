@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /* Material UI */
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,7 +9,7 @@ import Divider from '@material-ui/core/Divider';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#fbfbfb",
-    height: 400,
+    marginTop: 45
   },
   statistics: {
     color: "#000000",
@@ -72,7 +73,8 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "29px",
     color: "#000000",
     display: "inline-block",
-    marginLeft: 232,
+    marginRight: 16,
+    float: "right",
   },
   cardDownLeftText: {
     fontFamily: "Inter",
@@ -83,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#B3B3B3",
     display: "inline-block",
     marginLeft: 16,
+    float: "left",
   },
   cardDownRightText: {
     fontFamily: "Inter",
@@ -92,7 +95,8 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "15px",
     color: "#B3B3B3",
     display: "inline-block",
-    marginLeft: 276+50,
+    float: "right",
+    marginRight: 16,
   },
   cardComparaisonText: {
     fontFamily: "Inter",
@@ -192,4 +196,12 @@ export default function Revenues(props) {
       </div>
     </div>
   )
+}
+
+Revenues.propTypes = {
+  /**
+   * Data used by the component
+   * @see revenues.json
+   */
+  data: PropTypes.array.isRequired,
 }
